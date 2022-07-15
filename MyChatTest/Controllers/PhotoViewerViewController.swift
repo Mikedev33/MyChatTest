@@ -1,9 +1,4 @@
-//
-//  PhotoViewerViewController.swift
-//  MyChatTest
-//
-//  Created by Kirill Koban on 14.07.2022.
-//
+
 
 import UIKit
 
