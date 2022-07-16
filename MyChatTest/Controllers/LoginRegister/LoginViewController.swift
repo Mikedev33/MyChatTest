@@ -1,6 +1,6 @@
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -109,7 +109,7 @@ class LoginViewController: UIViewController {
     }
     
     
-    @objc private loginButtonTapped() {
+    @objc private func loginButtonTapped() {
         guard let email = emailField.text, let password = passwordField.text,
               !email.isEmpty, !password.isEmpty, password.count >= 6 else{
             alertUserError()
