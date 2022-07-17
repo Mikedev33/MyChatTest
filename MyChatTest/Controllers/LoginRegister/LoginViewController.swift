@@ -1,6 +1,6 @@
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -110,6 +110,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     @objc private func loginButtonTapped() {
+        
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        
         guard let email = emailField.text, let password = passwordField.text,
               !email.isEmpty, !password.isEmpty, password.count >= 6 else{
             alertUserError()
@@ -136,6 +140,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
 
+}
 
-
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == emailField {
+            passwordField.becomeFirstResponder()
+        }
+        else if textField == passwordField {
+            loginButtonTapped()
+        }
+        return true
+    }
 }
